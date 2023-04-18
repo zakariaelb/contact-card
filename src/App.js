@@ -11,15 +11,23 @@ function App() {
     isFavorite: false
   })
   let starIcon = contact.isFavorite ? "star-gold.png" : "star-white.png"
+// function toggleFavorite(){
+//   console.log("Toggle Favorite")
+//   setContact(prevContact => {
+//     return {
+//       ...prevContact,
+//       isFavorite: !prevContact.isFavorite
+//     }
+//   })
+// }
+///////////////or
 function toggleFavorite(){
   console.log("Toggle Favorite")
-  setContact(prevContact => {
-    return {
-      ...prevContact,
-      isFavorite: !prevContact.isFavorite
-    }
-  })
-}
+  setContact(prevContact => ({
+    ...prevContact,
+    isFavorite: !prevContact.isFavorite
+  }))
+} 
 return (
   <main>
     <article className="card">
