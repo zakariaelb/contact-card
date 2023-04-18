@@ -1,25 +1,43 @@
-import logo from './logo.svg';
+import React from "react";
 import './App.css';
 
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [contact, setContact] = React.useState({
+    firstName:"Elon",
+    lastName:"Musk",
+    phone: "+ 1 226 5 464 744",
+    email: "itsme@elom.com",
+    isFavorite: false
+  })
+  let starIcon = contact.isFavorite ? "star-gold.png" : "star-white.png"
+function toggleFavorite(){
+  console.log("Toggle Favorite")
+  setContact(prevContact => {
+    return {
+      ...prevContact,
+      isFavorite: !prevContact.isFavorite
+    }
+  })
+}
+return (
+  <main>
+    <article className="card">
+      <img src="./images/user.png" className='card--image'/>
+      <div className='card--info'>
+        <img src={`../images/${starIcon}`}          
+        className="card--favorite"
+          onClick={toggleFavorite}        
+        />
+        <h2 className="card--name">
+            {contact.firstName} {contact.lastName}
+        </h2>
+        <p className="card--contact">{contact.phone}</p>
+        <p className="card--contact">{contact.email}</p>
+      </div>
+    </article>
+  </main>
+)
 }
 
 export default App;
